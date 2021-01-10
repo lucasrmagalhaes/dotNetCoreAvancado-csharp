@@ -18,3 +18,11 @@ C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\obj\Debug
 C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.dll
 C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.pdb
 C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.genruntimeconfig.cache
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\bin\Debug\netcoreapp3.1\curso.api.xml
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.csproj.CopyComplete
+C:\Users\Lucas Magalhães\Desktop\.NETCoreAvancado-DIO\curso\curso.api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll

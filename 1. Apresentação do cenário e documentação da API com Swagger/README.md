@@ -3,7 +3,7 @@
 <ul>
   <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#introdu%C3%A7%C3%A3o-e-setup-da-api">Introdução e setup da API</a></li>
   <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#conhe%C3%A7a-o-postman">Conheça o Postman</a></li>
-  <li><a href="#">Introdução a biblioteca Swashbucle.AspNetCore.Annotations</a></li>
+  <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#introdu%C3%A7%C3%A3o-a-biblioteca-swashbucleaspnetcoreannotations">Introdução a biblioteca Swashbucle.AspNetCore.Annotations</a></li>
   <li><a href="#">Usando ConfigureApiBehaviorOptions</a></li>
 </ul>
 
@@ -239,7 +239,7 @@ namespace curso.api.Controllers
 <hr />
 
 <p align="left">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testando Logar com a nova URL:
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testando a classe - Logar com a nova URL:
 </p>
 
 <pre>
@@ -263,7 +263,7 @@ Status: 200 OK
 <hr />
 
 <p align="left">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testando o Registrar:
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testando a classe - Registrar:
 </p>
 
 <pre>
@@ -285,5 +285,222 @@ Body
 Status: 201 Created
 </pre>
 
+<hr />
+
 <h1 align="center">Introdução a biblioteca Swashbucle.AspNetCore.Annotations</h1>
+
+<h4 align="left">Configuração do swagger para documentação da API</h4>
+
+<ul>
+  <li>Instalação do Pacote Nuget</li>
+  <li>Configuração do XML</li>
+  <li>Configuração do Service (IOC)</li>
+  <li>Habilitar o Middleware</li>
+</ul>
+
+<hr />
+
+<h5 align="center">Documentação do código em xml</h5>
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Botão direito do mouse em curso.api<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Build<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[X] XML documentation file: curso.api.xml<br />
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Botão direito do mouse em curso.api<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Build
+</p>
+
+<hr />
+
+<h5 align="center">Configuração do Swagger</h5>
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Botão direito do mouse em Dependencies<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manage NuGet Packages...<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browse: Swashbucle.AspNetCore<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Install<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I Accept<br />
+</p>
+
+<hr />
+
+<h5 align="center">Configuração do Startup.cs</h5>
+
+```C#
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.IO;
+using System.Reflection;
+
+namespace curso.api
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API curso");
+                c.RoutePrefix = string.Empty;
+            });
+        }
+    }
+}
+```
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Executar<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://localhost:44307/<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Swagger rodando.
+</p>
+
+<hr />
+
+<h5 align="center">Instalação de Ferramenta do Swagger</h5>
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Botão direito do mouse em Dependencies<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manage NuGet Packages...<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browse: Swashbucle.AspNetCore.Annotations<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Install<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I Accept<br />
+</p>
+
+<hr />
+
+<h5 align="center">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configurando a ferramenta:<br />
+</h5>
+
+```C#
+using curso.api.Models;
+using curso.api.Models.Usuarios;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+
+namespace curso.api.Controllers
+{
+    [Route("api/v1/usuario")]
+    [ApiController]
+    public class UsuarioController : ControllerBase
+    {
+        [SwaggerResponse(statusCode: 200, description: "Sucesso ao autenticar", Type = typeof(LoginViewModelInput))]
+        [SwaggerResponse(statusCode: 400, description: "Campos obrigatórios", Type = typeof(ValidaCampoViewModelOutput))]
+        [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
+        [HttpPost]
+        [Route("logar")]
+        public IActionResult Logar(LoginViewModelInput loginViewModelInput)
+        {
+            return Ok(loginViewModelInput);
+        }
+
+        [HttpPost]
+        [Route("registrar")]
+        public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
+        {
+            return Created("", loginViewModelInput);
+        }
+    }
+}
+```
+
+<hr />
+
+<h5 align="center">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Criando as classes de tratamento de erro:<br />
+</h5>
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dentro de Models, criar a Classe: ErroGenericoViewModel
+</p>
+
+```C#
+namespace curso.api
+{
+    public class ErroGenericoViewModel
+    {
+        public string Mensagem { get; set; }
+    }
+}
+```
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dentro de Models, criar a Classe: ValidaCampoViewModelOutput
+</p>
+
+```C#
+using System.Collections.Generic;
+
+namespace curso.api.Models
+{
+    public class ValidaCampoViewModelOutput
+    {
+        public IEnumerable<string> Erros { get; private set; }
+
+        public ValidaCampoViewModelOutput(IEnumerable<string> erros)
+        {
+            Erros = erros;
+        }
+    }
+}
+```
+<hr />
+
+<h5 align="center">Setup validação de entrada de dados</h5>
+
+<ul>
+  <li>Criação das ViewModels</li>
+  <li>Configuração das ViewModels</li>
+  <li>Configuração do Action Filter</li>
+  <li>Configuração do Startup</li>
+</ul>
+
+
+<hr />
+
+<h1 align="center">Usando ConfigureApiBehaviorOptions</h1>
 

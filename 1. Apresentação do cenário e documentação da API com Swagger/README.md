@@ -19,6 +19,8 @@
 
 <hr />
 
+<h1 align="center">Introdução e setup da API</h1>
+
 <h4 align="left">Parte 1: Apresentação do cenário</h4>
 
 <p align="left">
@@ -103,7 +105,7 @@ namespace curso.api.Controllers
         [HttpPost]
         public IActionResult Logar(LoginViewModelInput loginViewModelInput)
         {
-            return Created("", loginViewModelInput);
+            return Ok(loginViewModelInput);
         }
     }
 }
@@ -141,3 +143,119 @@ namespace curso.api.Models.Usuarios
 ```
 
 <hr />
+
+<h1 align="center">Conheça o <a href="https://www.postman.com/">Postman</a></h1>
+
+<pre>
+POST: https://localhost:44307/api/Usuario
+
+Body 
+(X) raw - | Text: JSON
+</pre>
+
+```json
+{
+  "Login": "teste",
+  "Senha": "senha"
+}
+```
+
+<pre>
+Status: 200 OK
+</pre>
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dentro de Usuarios, criar a Classe: RegistroViewModelInput
+</p>
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace curso.api.Models.Usuarios
+{
+    public class RegistroViewModelInput
+    {
+        [Required(ErrorMessage = "O Login é obrigatório")]
+        public string Login { get; set; }
+
+        [Required(ErrorMessage = "O E-mail é obrigatório")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "A senha é obrigatória")]
+        public string Senha { get; set; }
+    }
+}
+```
+
+```C#
+using curso.api.Models.Usuarios;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace curso.api.Controllers
+{
+    [Route("api/v1/usuario")]
+    [ApiController]
+    public class UsuarioController : ControllerBase
+    {
+        [HttpPost]
+        [Route("logar")]
+        public IActionResult Logar(LoginViewModelInput loginViewModelInput)
+        {
+            return Ok(loginViewModelInput);
+        }
+
+        [HttpPost]
+        [Route("registrar")]
+        public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
+        {
+            return Created("", loginViewModelInput);
+        }
+    }
+}
+```
+
+<pre>
+POST: https://localhost:44307/api/v1/usuario/logar
+
+Body 
+(X) raw - | Text: JSON
+</pre>
+
+```json
+{
+  "Login": "teste",
+  "Senha": "senha"
+}
+```
+
+<pre>
+Status: 200 OK
+</pre>
+
+<pre>
+POST: https://localhost:44307/api/v1/usuario/registrar
+
+Body 
+(X) raw - | Text: JSON
+</pre>
+
+```json
+{
+  "Login": "Lucas",
+  "Senha": "123",
+  "Email": "lucasdarosa.ti@gmail.com"
+}
+```
+
+<pre>
+Status: 201 Created
+</pre>

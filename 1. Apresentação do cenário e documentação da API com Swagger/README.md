@@ -1,8 +1,8 @@
 <h1 align="left">Apresentação do cenário e documentação da API com Swagger</h1>
 
 <ul>
-  <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#parte-1-apresenta%C3%A7%C3%A3o-do-cen%C3%A1rio">Introdução e setup da API</a></li>
-  <li><a href="#">Conheça o Postman</a></li>
+  <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#introdu%C3%A7%C3%A3o-e-setup-da-api">Introdução e setup da API</a></li>
+  <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#conhe%C3%A7a-o-postman">Conheça o Postman</a></li>
   <li><a href="#">Introdução a biblioteca Swashbucle.AspNetCore.Annotations</a></li>
   <li><a href="#">Usando ConfigureApiBehaviorOptions</a></li>
 </ul>
@@ -146,6 +146,10 @@ namespace curso.api.Models.Usuarios
 
 <h1 align="center">Conheça o <a href="https://www.postman.com/">Postman</a></h1>
 
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Primeiro Teste:
+</p>
+
 <pre>
 POST: https://localhost:44307/api/Usuario
 
@@ -163,6 +167,8 @@ Body
 <pre>
 Status: 200 OK
 </pre>
+
+<hr />
 
 <p align="left">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dentro de Usuarios, criar a Classe: RegistroViewModelInput
@@ -190,6 +196,13 @@ namespace curso.api.Models.Usuarios
     }
 }
 ```
+
+<hr />
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UsuarioController<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrar adicionado.
+</p>
 
 ```C#
 using curso.api.Models.Usuarios;
@@ -223,6 +236,12 @@ namespace curso.api.Controllers
 }
 ```
 
+<hr />
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testando Logar com a nova URL:
+</p>
+
 <pre>
 POST: https://localhost:44307/api/v1/usuario/logar
 
@@ -240,6 +259,12 @@ Body
 <pre>
 Status: 200 OK
 </pre>
+
+<hr />
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testando o Registrar:
+</p>
 
 <pre>
 POST: https://localhost:44307/api/v1/usuario/registrar
@@ -259,3 +284,6 @@ Body
 <pre>
 Status: 201 Created
 </pre>
+
+<h1 align="center">Introdução a biblioteca Swashbucle.AspNetCore.Annotations</h1>
+

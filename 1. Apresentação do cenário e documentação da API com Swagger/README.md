@@ -20,7 +20,7 @@
 <h4 align="left">Parte 1: Apresentação do cenário</h4>
 
 <p align="left">
-  <a herf="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/blob/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger/img/Apresenta%C3%A7%C3%A3o%20do%20Cen%C3%A1rio.jpg"></a>
+  <img src="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/blob/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger/img/Apresenta%C3%A7%C3%A3o%20do%20Cen%C3%A1rio.jpg" alt="Apresentação do cenário">
 </p>
 
 <hr />

@@ -502,3 +502,129 @@ namespace curso.api.Models
 <hr />
 
 <h1 align="center">Usando ConfigureApiBehaviorOptions</h1>
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Desabilitando as validações dos Model States inválido.
+</p>
+
+```C#
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.IO;
+using System.Reflection;
+
+namespace curso.api
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers()
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options.SuppressModelStateInvalidFilter = true;
+                });
+            services.AddSwaggerGen(c =>
+            {
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API curso");
+                c.RoutePrefix = string.Empty;
+            });
+        }
+    }
+}
+```
+<hr />
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dentro de curso.api, criar o diretório: Filters<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dentro de Filters, criar a classe: ValidacaoModelStateCustomizado
+</p>
+
+```C#
+using curso.api.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using System.Linq;
+
+namespace curso.api.Filters
+{
+    public class ValidacaoModelStateCustomizado : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (!context.ModelState.IsValid)
+            {
+                var validaCampoViewModel = new ValidaCampoViewModelOutput(context.ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage));
+                context.Result = new BadRequestObjectResult(validaCampoViewModel);
+            }
+        }
+    }
+}
+```
+
+<hr />
+
+<p align="left">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teste de validação sem caractere nos campos:<br />
+</p>
+
+<pre>
+POST
+​/api​/v1​/usuario​/logar
+
+Example Value
+{
+  "login": "",
+  "senha": ""
+}
+
+
+Code	400	
+Error: Response body
+{
+  "erros": [
+    "O login é obrigatório!",
+    "A senha é obrigatória!"
+  ]
+}
+</pre>

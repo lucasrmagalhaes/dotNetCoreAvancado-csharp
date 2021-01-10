@@ -7,6 +7,8 @@
   <li><a href="#">Usando ConfigureApiBehaviorOptions</a></li>
 </ul>
 
+<hr />
+
 <h4 align="left">Objetivos</h4>
 
 <ol>
@@ -137,3 +139,5 @@ namespace curso.api.Models.Usuarios
     }
 }
 ```
+
+<hr />

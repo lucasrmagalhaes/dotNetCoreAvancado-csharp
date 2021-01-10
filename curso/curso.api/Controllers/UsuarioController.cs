@@ -25,7 +25,7 @@ namespace curso.api.Controllers
         {
 
             // Simulação de Login no Banco.
-            var usuarioViewModelOutput = new UsuarioViewModelOutput()
+            var usuarioViewModelOutput = new usuarioViewModelOutput()
             {
                 Codigo = 1,
                 Login = "lucasrmagalhaes",

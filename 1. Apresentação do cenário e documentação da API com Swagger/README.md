@@ -4,7 +4,7 @@
   <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#introdu%C3%A7%C3%A3o-e-setup-da-api">Introdução e setup da API</a></li>
   <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#conhe%C3%A7a-o-postman">Conheça o Postman</a></li>
   <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#introdu%C3%A7%C3%A3o-a-biblioteca-swashbucleaspnetcoreannotations">Introdução a biblioteca Swashbucle.AspNetCore.Annotations</a></li>
-  <li><a href="#">Usando ConfigureApiBehaviorOptions</a></li>
+  <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#usando-configureapibehavioroptions">Usando ConfigureApiBehaviorOptions</a></li>
 </ul>
 
 <hr />
@@ -499,8 +499,6 @@ namespace curso.api.Models
   <li>Configuração do Startup</li>
 </ul>
 
-
 <hr />
 
 <h1 align="center">Usando ConfigureApiBehaviorOptions</h1>
-

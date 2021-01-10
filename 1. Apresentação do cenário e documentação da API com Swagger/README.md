@@ -1,5 +1,12 @@
 <h1 align="left">Apresentação do cenário e documentação da API com Swagger</h1>
 
+<ul>
+  <li><a href="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/tree/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger#parte-1-apresenta%C3%A7%C3%A3o-do-cen%C3%A1rio">Introdução e setup da API</a></li>
+  <li><a href="#">Conheça o Postman</a></li>
+  <li><a href="#">Introdução a biblioteca Swashbucle.AspNetCore.Annotations</a></li>
+  <li><a href="#">Usando ConfigureApiBehaviorOptions</a></li>
+</ul>
+
 <h4 align="left">Objetivos</h4>
 
 <ol>
@@ -13,7 +20,7 @@
 <h4 align="left">Parte 1: Apresentação do cenário</h4>
 
 <p align="left">
-  <a herf="#"></a>
+  <a herf="https://github.com/lucasrmagalhaes/.NETCoreAvancado-DIO/blob/main/1.%20Apresenta%C3%A7%C3%A3o%20do%20cen%C3%A1rio%20e%20documenta%C3%A7%C3%A3o%20da%20API%20com%20Swagger/img/Apresenta%C3%A7%C3%A3o%20do%20Cen%C3%A1rio.jpg"></a>
 </p>
 
 <hr />

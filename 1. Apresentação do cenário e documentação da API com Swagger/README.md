@@ -504,7 +504,7 @@ namespace curso.api.Models
 <h1 align="center">Usando ConfigureApiBehaviorOptions</h1>
 
 <p align="left">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Desabilitando as validações dos Model States inválido.
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Desabilitando as validações dos Model State - inválido:
 </p>
 
 ```C#

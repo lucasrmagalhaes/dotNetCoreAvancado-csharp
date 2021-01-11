@@ -1,13 +1,6 @@
 <h1 align="left">Protegendo a nossa API</h1>
 
-<ul>
-  <li><a href="#">Configuração com 'provider' JWT</a></li>
-  <li><a href="#">Correção da Startup.cs</a></li>
-</ul>
-
-<hr />
-
-<h1 align="center">Configuração com 'provider' JWT</h1>
+<h4 align="left">Configuração com 'provider' JWT</h4>
 
 <ul>
   <li>Instalação do Pacote Nuget</li>

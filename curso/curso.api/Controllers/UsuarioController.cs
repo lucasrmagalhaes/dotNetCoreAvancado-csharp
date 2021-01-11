@@ -49,7 +49,10 @@ namespace curso.api.Controllers
             var tokenGenerated = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
             var token = jwtSecurityTokenHandler.WriteToken(tokenGenerated);
 
-            return Ok(loginViewModelInput);
+            return Ok(new {
+                Token = token,
+                Usuario = usuarioViewModelOutput
+            });
         }
 
         [HttpPost]
@@ -57,6 +60,26 @@ namespace curso.api.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
         {
+
+            var optionsBuilder = new DbContextOptions<CursoDbContext>();
+            options.UseSqlServer("Server=#;Database=#,user=#, password=#");
+            CursoDbContext contexto = new CursoDbContext(options.Options);
+
+            var migracoesPendentes = contexto.Database.GetPendingMigrations();
+            
+            if(migracoesPendentes.Count() > 0)
+            {
+                contexto.Datase.Migrate();
+            }
+
+            var usuario = new Usuario();
+            usuario.Login = loginViewModelInput.Login;
+            usuario.Senha = loginViewModelInput.Senha;
+            usuario.Email = loginViewModelInput.Email;
+
+            contexto.Usuario.Add();
+            contexto.SaveChanges();
+
             return Created("", loginViewModelInput);
         }
     }

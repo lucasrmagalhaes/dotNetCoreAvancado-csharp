@@ -1,8 +1,8 @@
 <h1 align="left">Um pouco de Design Pattern</h1>
 
 <ul>
-  <li><h4 align="left">O que é IOC e DI Pattern - Refatoração</h4></li>
-  <li><h4 align="left">Finalizando aplicações de Design Pattern</h4></li>
+  <li>O que é IOC e DI Pattern - Refatoração</li>
+  <li>Finalizando aplicações de Design Pattern</li>
 </ul>
 
 <details>
